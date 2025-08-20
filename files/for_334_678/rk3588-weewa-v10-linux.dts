@@ -1,0 +1,253 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+ *
+ */
+
+/dts-v1/;
+
+#include "rk3588-weewa-lp4-v10.dtsi"
+#include "rk3588-ipc.dtsi"
+#include "rk3588-weewa-cam-v10.dtsi"
+
+/ {
+	model = "Rockchip RK3588 WEEWA LP4 V10 Board";
+	compatible = "rockchip,rk3588-WEEWA-lp4-v10", "rockchip,rk3588";
+};
+
+&backlight {
+	status = "disabled";
+};
+
+&combphy0_ps {
+	status = "okay";
+};
+
+&combphy1_ps {
+	status = "okay";
+};
+
+&combphy2_psu {
+	status = "okay";
+};
+
+&dp0 {
+	status = "disabled";
+};
+
+&dp0_in_vp2 {
+	status = "disabled";
+};
+
+&dp1 {
+	status = "disabled";
+};
+
+&dp1_in_vp2 {
+	status = "disabled";
+};
+
+&dsi0 {
+	status = "disabled";
+};
+
+&dsi0_in_vp3 {
+	status = "disabled";
+};
+
+&dsi0_panel {
+	status = "disabled";
+};
+
+&dsi1_panel {
+	status = "disabled";
+};
+
+&hdmi0 {
+	status = "disabled";
+};
+
+&hdmi0_in_vp0 {
+	status = "disabled";
+};
+
+&hdmi0_sound {
+	status = "disabled";
+};
+
+&hdmi1 {
+	status = "disabled";
+};
+
+&hdmi1_in_vp1 {
+	status = "disabled";
+};
+
+&hdmi1_sound {
+	status = "disabled";
+};
+
+&hdptxphy_hdmi0 {
+	status = "disabled";
+};
+
+&hdptxphy_hdmi1 {
+	status = "disabled";
+};
+
+&i2s5_8ch {
+	status = "disabled";
+};
+
+&i2s6_8ch {
+	status = "disabled";
+};
+
+&jpegd {
+	status = "disabled";
+};
+
+&jpegd_mmu {
+	status = "disabled";
+};
+
+&leds {
+	status = "disabled";
+};
+
+&pcie2x1l0 {
+	status = "okay";
+};
+
+&pcie2x1l1 {
+	status = "okay";
+};
+
+&pcie30phy {
+	status = "disabled";
+};
+
+&pcie3x4 {
+	status = "disabled";
+};
+
+&pwm6 {
+    pinctrl-names = "active";
+    pinctrl-0 = <&pwm6m1_pins>;
+	status = "okay";
+};
+
+&rkvdec0 {
+	status = "disabled";
+};
+
+&rkvdec0_mmu {
+	status = "disabled";
+};
+
+&rkvdec1_mmu {
+	status = "disabled";
+};
+
+&rkvdec_ccu {
+	status = "disabled";
+};
+
+
+&sata0 {
+	status = "disabled";
+};
+
+&uart7 {
+	status = "okay";
+	pinctrl-names = "default";
+    pinctrl-0 = <&uart7m1_xfer>;
+};
+
+&usbdp_phy1 {
+	status = "disabled";
+};
+
+&usbdp_phy1_dp {
+	status = "disabled";
+};
+
+&usbdp_phy1_u3 {
+	status = "disabled";
+};
+
+&usbdrd3_1 {
+	status = "disabled";
+};
+
+&usbdrd_dwc3_1 {
+	status = "disabled";
+};
+
+&usb_host0_ehci {
+	status = "okay";
+};
+
+&usb_host0_ohci {
+	status = "okay";
+};
+
+&usb_host1_ehci {
+	status = "okay";
+};
+
+&usb_host1_ohci {
+	status = "okay";
+};
+
+&u2phy1 {
+	status = "okay";
+};
+
+&u2phy1_otg {
+	status = "okay";
+};
+
+&u2phy2 {
+	status = "okay";
+};
+
+&u2phy2_host {
+	status = "okay";
+};
+
+&u2phy3 {
+	status = "okay";
+};
+
+&u2phy3_host {
+	status = "okay";
+};
+
+&vdpu {
+	status = "disabled";
+};
+
+&vdpu_mmu {
+	status = "disabled";
+};
+
+&wireless_bluetooth {
+	status = "disabled";
+};
+
+&wireless_wlan {
+	status = "okay";
+};
+
+&rkispp0_vir0{
+	status = "okay";
+};
+
+&rkispp0 {
+	status = "okay";
+};
+
+&fec0_mmu {
+	status = "okay";
+};
