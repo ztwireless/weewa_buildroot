@@ -13,6 +13,8 @@ ENABLE_ADB=0
 FULL_IMG=0
 CLEAN=0
 DRY_RUN=0
+VERSION="1.0.0"
+VERSION_CODE=1
 
 build() {
 	# info print
@@ -38,6 +40,8 @@ build() {
 	else
 		echo ">>> clean all before build: true"
 	fi
+	echo ">>> firmware version: $VERSION"
+	echo ">>> firmware version code: $VERSION_CODE"
 	echo ""
 
 	# basic check
@@ -58,10 +62,20 @@ build() {
 		./build.sh
 	fi
 
+	# replace rkipc.ini
+	echo ""
+	echo "changing version and version code in rkipc.ini..."
+	change_rkipc_ini
+
 	# build weewa projects
 	echo ""
 	echo "building weewa projects..."
 	build_weewa_app
+
+	# restore rkipc.ini
+	echo ""
+	echo "restoring rkipc.ini to git version..."
+	restore_rkipc_ini
 
 	# build rkscript
 	echo ""
@@ -90,6 +104,19 @@ build() {
 	# end
 	echo ""
 	echo "all done!!"
+}
+
+change_rkipc_ini() {
+	if [ $DRY_RUN == 0 ]; then
+		sed -i -e 's/firmware_version\s=\s[0-9\.]*/firmware_version = $VERSION/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+		sed -i -e 's/firmware_version_code\s=\s[0-9]*/firmware_version_code = $VERSION_CODE/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+	fi
+}
+
+restore_rkipc_ini() {
+	if [ $DRY_RUN == 0 ]; then
+		git checkout -- $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+	fi
 }
 
 build_rkscript() {
@@ -298,8 +325,14 @@ for i in "$@"; do
 	 	--clean)
 	 		CLEAN=1
 	 		;;
-	 	--dry-run)
+	 	--dry-run|--dry_run)
 	 		DRY_RUN=1
+	 		;;
+	 	--version=*)
+	 		VERSION="${i#*=}"
+	 		;;
+	 	--version-code=*|--version_code=*)
+	 		VERSION_CODE="${i#*=}"
 	 		;;
 	 	*)
 	 		;;
