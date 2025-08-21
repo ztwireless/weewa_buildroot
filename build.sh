@@ -115,7 +115,8 @@ change_rkipc_ini() {
 
 restore_rkipc_ini() {
 	if [ $DRY_RUN == 0 ]; then
-		git checkout -- $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+		cd $ROOT/external/rkipc/src/rk3588_multi_ipc
+		git checkout -- rkipc.ini
 	fi
 }
 
