@@ -60,6 +60,13 @@ build() {
 	echo "building weewa projects..."
 	build_weewa_app
 
+	# build rkscript
+	echo ""
+	echo "rebuilding rkscript for adb..."
+	rm -f $ROOT/buildroot/output/rockchip_rk3588/target/etc/init.d/S50usbdevice
+	cd $ROOT/buildroot
+	make rkscript-rebuild
+
 	# build firmware
 	echo ""
 	echo "building firmware..."
