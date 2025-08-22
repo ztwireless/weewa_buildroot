@@ -108,8 +108,8 @@ build() {
 
 change_rkipc_ini() {
 	if [ $DRY_RUN == 0 ]; then
-		sed -i -e 's/firmware_version\s=\s[0-9\.]*/firmware_version = $VERSION/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
-		sed -i -e 's/firmware_version_code\s=\s[0-9]*/firmware_version_code = $VERSION_CODE/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+		sed -i -e 's/firmware_version\s=\s[0-9\.]*/firmware_version = '"$VERSION"'/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+		sed -i -e 's/firmware_version_code\s=\s[0-9]*/firmware_version_code = '"$VERSION_CODE"'/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
 	fi
 }
 
