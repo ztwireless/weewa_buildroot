@@ -13,6 +13,7 @@ ENABLE_ADB=0
 FULL_IMG=0
 CLEAN=0
 DRY_RUN=0
+USERDATA=0
 VERSION="1.0.0"
 VERSION_CODE=1
 
@@ -300,7 +301,11 @@ gen_app_firmware() {
 gen_system_firmware() {
 	if [ $DRY_RUN == 0 ]; then
 		cd $PACK_FIRMWARE_PATH
-		cp $SCRIPT_DIR/files/package-file-system rk3588-package-file
+		if [ $USERDATA == 0 ]; then
+			cp $SCRIPT_DIR/files/package-file-system rk3588-package-file
+		else
+			cp $SCRIPT_DIR/files/package-file-system-with-userdata rk3588-package-file
+		fi
 		./mkupdate.sh
 		datetime=$(date +"%Y%m%d")
 
@@ -319,6 +324,7 @@ for i in "$@"; do
 	 		;;
 	 	--adb)
 	 		ENABLE_ADB=1
+	 		FULL_IMG=1
 	 		;;
 	 	--full)
 	 		FULL_IMG=1
@@ -334,6 +340,10 @@ for i in "$@"; do
 	 		;;
 	 	--version-code=*|--version_code=*)
 	 		VERSION_CODE="${i#*=}"
+	 		;;
+	 	--userdata)
+	 		USERDATA=1
+	 		FULL_IMG=1
 	 		;;
 	 	*)
 	 		;;
