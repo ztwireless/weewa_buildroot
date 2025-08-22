@@ -14,6 +14,7 @@ FULL_IMG=0
 CLEAN=0
 DRY_RUN=0
 USERDATA=0
+RUNNING_MODE="avs"
 VERSION="1.0.0"
 VERSION_CODE=1
 
@@ -43,6 +44,7 @@ build() {
 	fi
 	echo ">>> firmware version: $VERSION"
 	echo ">>> firmware version code: $VERSION_CODE"
+	echo ">>> default rkipc running mode: $RUNNING_MODE"
 	echo ""
 
 	# basic check
@@ -111,6 +113,7 @@ change_rkipc_ini() {
 	if [ $DRY_RUN == 0 ]; then
 		sed -i -e 's/firmware_version\s=\s[0-9\.]*/firmware_version = '"$VERSION"'/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
 		sed -i -e 's/firmware_version_code\s=\s[0-9]*/firmware_version_code = '"$VERSION_CODE"'/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
+		sed -i -e 's/running_mode\s=\s[a-z_]*/running_mode = '"$RUNNING_MODE"'/g' $ROOT/external/rkipc/src/rk3588_multi_ipc/rkipc.ini
 	fi
 }
 
@@ -344,6 +347,9 @@ for i in "$@"; do
 	 	--userdata)
 	 		USERDATA=1
 	 		FULL_IMG=1
+	 		;;
+	 	--mode=*|--running_mode=*|--running-mode=*)
+	 		RUNNING_MODE="${i#*=}"
 	 		;;
 	 	*)
 	 		;;
