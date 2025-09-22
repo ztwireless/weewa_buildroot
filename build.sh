@@ -174,30 +174,18 @@ check_prerequisite() {
 	fi
 
 	# check drivers
-	if [ -f $ROOT/kernel/drivers/media/i2c/imx334.c ]; then
-		echo "checking imx334.c...already existed"
-	else
-		echo "checking imx334.c....copied"
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/imx334.c $ROOT/kernel/drivers/media/i2c
-		fi
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/imx334.c $ROOT/kernel/drivers/media/i2c
 	fi
-	if [ -f $ROOT/kernel/drivers/media/i2c/imx586.c ]; then
-		echo "checking imx586.c...already existed"
-	else
-		echo "checking imx586.c....copied"
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/imx586.c $ROOT/kernel/drivers/media/i2c
-		fi
+	echo "checking imx334.c....copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/imx586.c $ROOT/kernel/drivers/media/i2c
 	fi
-	if [ -f $ROOT/kernel/drivers/media/i2c/imx678.c ]; then
-		echo "checking imx678.c...already existed"
-	else
-		echo "checking imx678.c....copied"
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/imx678.c $ROOT/kernel/drivers/media/i2c
-		fi
+	echo "checking imx586.c....copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/imx678.c $ROOT/kernel/drivers/media/i2c
 	fi
+	echo "checking imx678.c....copied"
 
 	# check configs
 	if [ $DRY_RUN == 0 ]; then
@@ -218,38 +206,22 @@ check_prerequisite() {
 		fi
 	fi
 	echo "checking rk3588-weewa-v10-linux.dts...copied"
-	if [ -f $ROOT/kernel/arch/arm64/boot/dts/rockchip/rk3588-weewa-v10.dtsi ]; then
-		echo "checking rk3588-weewa-v10.dtsi...already existed"
-	else
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/rk3588-weewa-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
-		fi
-		echo "checking rk3588-weewa-v10.dtsi...copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/rk3588-weewa-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
 	fi
-	if [ -f $ROOT/kernel/arch/arm64/boot/dts/rockchip/rk3588-weewa-lp4-v10.dtsi ]; then
-		echo "checking rk3588-weewa-lp4-v10.dtsi...already existed"
-	else
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/rk3588-weewa-lp4-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
-		fi
-		echo "checking rk3588-weewa-lp4-v10.dtsi...copied"
+	echo "checking rk3588-weewa-v10.dtsi...copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/rk3588-weewa-lp4-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
 	fi
-	if [ -f $ROOT/kernel/arch/arm64/boot/dts/rockchip/rk3588-weewa-cam-v10.dtsi ]; then
-		echo "checking rk3588-weewa-cam-v10.dtsi...already existed"
-	else
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/rk3588-weewa-cam-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
-		fi
-		echo "checking rk3588-weewa-cam-v10.dtsi...copied"
+	echo "checking rk3588-weewa-lp4-v10.dtsi...copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/rk3588-weewa-cam-v10.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
 	fi
-	if [ -f $ROOT/kernel/arch/arm64/boot/dts/rockchip/rk3588-weewa-cam-imx586-one.dtsi ]; then
-		echo "checking rk3588-weewa-cam-imx586-one.dtsi...already existed"
-	else
-		if [ $DRY_RUN == 0 ]; then
-			cp $SCRIPT_DIR/files/rk3588-weewa-cam-imx586-one.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
-		fi
-		echo "checking rk3588-weewa-cam-imx586-one.dtsi...copied"
+	echo "checking rk3588-weewa-cam-v10.dtsi...copied"
+	if [ $DRY_RUN == 0 ]; then
+		cp -f $SCRIPT_DIR/files/rk3588-weewa-cam-imx586-one.dtsi $ROOT/kernel/arch/arm64/boot/dts/rockchip
 	fi
+	echo "checking rk3588-weewa-cam-imx586-one.dtsi...copied"
 
 	# check adb enabled or not
 	if [ $DRY_RUN == 0 ]; then
